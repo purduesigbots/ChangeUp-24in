@@ -2,7 +2,7 @@
 
 namespace indexer {
 
-okapi::MotorGroup motors = {4,-9};
+okapi::MotorGroup motors = {-4,9};
 
 void init() {
 	motors.setGearing(okapi::AbstractMotor::gearset::green);
@@ -20,9 +20,9 @@ void opcontrol() {
 	if (master.get_digital(DIGITAL_L1))
 		speed = 100;
 	else if (master.get_digital(DIGITAL_L2))
-		speed = -100;
+		speed = 100;
     else if (master.get_digital(DIGITAL_R1))
-		speed = -60;
+		speed = 60;
 	else
 		speed = 0;
 
