@@ -3,7 +3,8 @@
 
 #include "okapi/api.hpp"
 
-namespace ejector{
+namespace ejector {
+
 
 extern okapi::MotorGroup motors;
 void init();
