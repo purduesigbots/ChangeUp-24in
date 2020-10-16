@@ -2,13 +2,7 @@
 
 namespace intake {
 
-okapi::MotorGroup motors = {5, -6};
-
-std::shared_ptr<okapi::AsyncPositionController<double, double>> controller =
-    okapi::AsyncPosControllerBuilder()
-        .withMotor(motors)
-        .withGains({0.001, 0})
-        .build();
+okapi::MotorGroup motors = {7, -8};
 
 void init() {
 	motors.setGearing(okapi::AbstractMotor::gearset::green);

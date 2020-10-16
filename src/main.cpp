@@ -13,8 +13,8 @@ void initialize() {
 	);
 
 	initDrive(
-		{1, 2}, // left motors
-		{-3, -4}, // right motors
+		{-17, 18, -19}, // left motors
+		{13, -14, 15}, // right motors
 		200, // motor rpm
 
 		273, // ticks per distance unit (default = ft)
@@ -33,6 +33,8 @@ void initialize() {
 
 	//subsystems
 	intake::init();
+	indexer::init();
+	ejector::init();
 }
 
 void disabled() {
@@ -63,6 +65,15 @@ void opcontrol() {
 
 		// intake
 		intake::opcontrol();
+
+		//roller
+		ejector::opcontrol();
+
+		//indexer
+		indexer::opcontrol();
+
+		//transmission
+		transmission::opcontrol();
 
 		// chassis
 		arcade(master.get_analog(ANALOG_LEFT_Y) * (double)100 / 127,
