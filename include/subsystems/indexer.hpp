@@ -3,7 +3,8 @@
 
 #include "okapi/api.hpp"
 
-namespace indexer{
+namespace indexer {
+
 
 extern okapi::MotorGroup motors;
 void init();
