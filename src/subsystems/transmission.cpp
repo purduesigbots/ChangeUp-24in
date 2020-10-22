@@ -1,7 +1,7 @@
 #include "main.h"
 
 namespace transmission {
-    ADIDigitalOut piston ('A');
+    ADIDigitalOut piston ('a');
 
     void change() {
         static bool currVal = false;

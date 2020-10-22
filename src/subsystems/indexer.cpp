@@ -3,6 +3,7 @@
 namespace indexer {
 
 okapi::MotorGroup motors = {-4,9};
+ADIAnalogIn line_sensor('b');
 
 void init() {
 	motors.setGearing(okapi::AbstractMotor::gearset::green);
@@ -17,12 +18,16 @@ void move(int speed) {
 void opcontrol() {
 	static int speed;
 
-	if (master.get_digital(DIGITAL_L1))
+	if (master.get_digital(DIGITAL_L1)) //score ball
 		speed = 100;
-	else if (master.get_digital(DIGITAL_L2))
-		speed = 100;
-    else if (master.get_digital(DIGITAL_R1))
-		speed = 60;
+	else if (master.get_digital(DIGITAL_L2)) //outtake
+		speed = -100;
+	else if (master.get_digital(DIGITAL_R1)) { //run until dectected
+		if (line_sensor.get_value() > 1850)
+			speed = 50;
+		else
+			speed = -15;
+	}
 	else
 		speed = 0;
 
