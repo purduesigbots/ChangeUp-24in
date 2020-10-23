@@ -23,10 +23,7 @@ void opcontrol() {
 	else if (master.get_digital(DIGITAL_L2)) //outtake
 		speed = -100;
 	else if (master.get_digital(DIGITAL_R1)) { //run until dectected
-		if (line_sensor.get_value() > 2850)
-			speed = 50;
-		else
-			speed = -15;
+		speed = 100;
 	}
 	else
 		speed = 0;

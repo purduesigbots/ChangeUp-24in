@@ -17,16 +17,22 @@ void move(int speed) {
 
 void opcontrol() {
 	static int speed;
+	static bool detected = false;
+
+	if(master.get_digital_new_press(DIGITAL_R1))
+		detected = false;
 
 	if (master.get_digital(DIGITAL_L1)) //score ball
 		speed = 100;
 	else if (master.get_digital(DIGITAL_L2)) //outtake
 		speed = -100;
 	else if (master.get_digital(DIGITAL_R1)) { //run until dectected
-		if (line_sensor.get_value() > 2850)
+		if (line_sensor.get_value() > 2850 && detected == false)
 			speed = 50;
-		else
+		else{
+			detected = true;
 			speed = -15;
+		}
 	}
 	else
 		speed = 0;
