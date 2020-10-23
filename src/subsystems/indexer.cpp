@@ -31,7 +31,7 @@ void opcontrol() {
 			speed = 50;
 		else{
 			detected = true;
-			speed = -15;
+			speed = 0;
 		}
 	}
 	else
