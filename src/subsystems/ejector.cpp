@@ -3,7 +3,7 @@
 namespace ejector {
 
 okapi::MotorGroup motors = {-1};
-
+ADIAnalogIn line_sensor('b');
 
 void init() {
 	motors.setGearing(okapi::AbstractMotor::gearset::green);
@@ -18,10 +18,13 @@ void move(int speed) {
 void opcontrol() {
 	static int speed;
 
-	if (master.get_digital(DIGITAL_L1))
+	if (master.get_digital(DIGITAL_L1)) //score
 		speed = 100;
-	else if (master.get_digital(DIGITAL_L2))
+	else if (master.get_digital(DIGITAL_L2)) //outtake
 		speed = -100;
+	else if (master.get_digital(DIGITAL_R1)) { //run until dectected
+		speed = 100;
+	}
 	else
 		speed = 0;
 
