@@ -5,23 +5,23 @@
         "target": "v5",
         "templates": {
             "ARMS": {
-                "location": "C:\\Users\\micah\\AppData\\Roaming\\PROS\\templates\\ARMS@1.1.0",
+                "location": "/Users/kunwarsahni/Library/Application Support/PROS/templates/ARMS@1.1.1",
                 "metadata": {
-                    "origin": "local"
+                    "origin": "ARMS"
                 },
                 "name": "ARMS",
                 "py/object": "pros.conductor.templates.local_template.LocalTemplate",
                 "supported_kernels": "^3.3.1",
                 "system_files": [
-                    "include\\ARMS\\api.h",
-                    "include\\ARMS\\config.h",
-                    "firmware\\ARMS.a",
                     "include\\ARMS\\chassis.h",
-                    "include\\ARMS\\selector.h"
+                    "firmware\\ARMS.a",
+                    "include\\ARMS\\selector.h",
+                    "include\\ARMS\\config.h",
+                    "include\\ARMS\\api.h"
                 ],
                 "target": "v5",
                 "user_files": [],
-                "version": "1.1.0"
+                "version": "1.1.1"
             },
             "kernel": {
                 "location": "C:\\Users\\micah\\AppData\\Roaming\\PROS\\templates\\kernel@3.3.1",
