@@ -5,15 +5,15 @@
 namespace chassis {
 
 // negative numbers mean reversed motor
-#define LEFT_MOTORS 1, 2
-#define RIGHT_MOTORS -3, -4
+#define LEFT_MOTORS -17, 18, -19
+#define RIGHT_MOTORS 12, -13, 14
 #define GEARSET 200 // rpm of chassis motors
 
-#define DISTANCE_CONSTANT 273 // ticks per distance unit, the default is a foot
-#define DEGREE_CONSTANT 2.3   // ticks per degree
+#define DISTANCE_CONSTANT 46 // ticks per distance unit, the default is a inch
+#define DEGREE_CONSTANT 6.3  // ticks per degree
 
 // slew control (autonomous only)
-#define ACCEL_STEP 8    // smaller number = more slew
+#define ACCEL_STEP 2    // smaller number = more slew
 #define DECCEL_STEP 200 // 200 = no slew
 #define ARC_STEP 2      // acceleration for arcs
 #define MIN_SPEED 15
@@ -24,7 +24,7 @@ namespace chassis {
 #define TURN_KP .8
 #define TURN_KD 3
 #define ARC_KP .05
-#define DIF_KP .5
+#define DIF_KP .3
 
 // sensors
 #define IMU_PORT 0               // port 0 for disabled
