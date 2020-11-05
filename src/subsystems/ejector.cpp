@@ -22,12 +22,10 @@ void opcontrol() {
 		speed = 100;
 	else if (master.get_digital(DIGITAL_L2)) // outtake
 		speed = -100;
-	else if (master.get_digital(DIGITAL_R1)) { // run until dectected
-		speed = 100;
-	} else
-		speed = 0;
-
-	move(speed);
 }
+else speed = 0;
+
+move(speed);
+} // namespace ejector
 
 } // namespace ejector
