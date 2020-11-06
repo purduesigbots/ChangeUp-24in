@@ -11,6 +11,7 @@
 #include "subsystems/indexer.hpp"
 #include "subsystems/ejector.hpp"
 #include "subsystems/transmission.hpp"
+#include "subsystems/wings.hpp"
 
 // scripts
 #include "scripts/blue.hpp"
