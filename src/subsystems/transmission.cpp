@@ -4,7 +4,7 @@ namespace transmission {
 
 ADIDigitalOut piston('a');
 
-void change() {
+void toggle() {
 	static bool currVal = false;
 	currVal = !currVal;
 	piston.set_value(currVal);
@@ -12,7 +12,7 @@ void change() {
 
 void opcontrol() {
 	if (master.get_digital_new_press(DIGITAL_A))
-		change();
+		toggle();
 }
 
 } // namespace transmission
