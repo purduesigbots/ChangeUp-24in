@@ -1,5 +1,4 @@
 #include "main.h"
-#include "pros/adi.hpp"
 
 pros::Controller master(CONTROLLER_MASTER);
 
@@ -39,7 +38,6 @@ void autonomous() {
 }
 
 void opcontrol() {
-	ADIAnalogIn line_sensor('b');
 	while (true) {
 		// button to start autonomous for testing
 		if (master.get_digital(DIGITAL_LEFT) && !competition::is_connected())
@@ -63,6 +61,5 @@ void opcontrol() {
 
 		delay(20);
 
-		printf("%i\n", line_sensor.get_value());
 	}
 }

@@ -3,7 +3,6 @@
 namespace ejector {
 
 okapi::MotorGroup motors = {-1, 2};
-ADIAnalogIn line_sensor('b');
 
 void init() {
 	motors.setGearing(okapi::AbstractMotor::gearset::green);

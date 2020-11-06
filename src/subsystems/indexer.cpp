@@ -36,6 +36,9 @@ void opcontrol() {
 	} else
 		speed = 0;
 
+	// debug output for line sensor
+	printf("%i\n", line_sensor.get_value());
+
 	move(speed);
 }
 
