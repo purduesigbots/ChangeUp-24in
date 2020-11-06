@@ -2,6 +2,8 @@
 
 namespace indexer {
 
+#define THRESHOLD 2880
+
 okapi::MotorGroup motors = {-4, 9};
 ADIAnalogIn line_sensor('b');
 
@@ -36,7 +38,32 @@ void opcontrol() {
 	} else
 		speed = 0;
 
+	// debug output for line sensor
+	printf("%i\n", line_sensor.get_value());
+
 	move(speed);
+}
+
+void runUntilFull() {
+	while (line_sensor.get_value() > THRESHOLD) {
+		move(100);
+	}
+	move(0);
+}
+
+void score(int num) {
+	int i = 0;
+	while (i < num) {
+		runUntilFull();
+		while (line_sensor.get_value() < THRESHOLD) {
+			ejector::move(100);
+			move(100);
+		}
+		delay(500);
+		ejector::move(0);
+		move(0);
+		i += 1;
+	}
 }
 
 } // namespace indexer
