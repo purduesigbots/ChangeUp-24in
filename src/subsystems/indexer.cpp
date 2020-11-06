@@ -39,4 +39,26 @@ void opcontrol() {
 	move(speed);
 }
 
+void runUntilFull() {
+	while (line_sensor.get_value() > 2880) {
+		move(100);
+	}
+	move(0);
+}
+
+void score(int num) {
+	int i = 0;
+	while (i < num) {
+		runUntilFull();
+		while (line_sensor.get_value() < 2880) {
+			ejector::move(100);
+			move(100);
+		}
+		delay(500);
+		ejector::move(0);
+		move(0);
+		i += 1;
+	}
+}
+
 } // namespace indexer

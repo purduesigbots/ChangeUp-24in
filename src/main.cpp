@@ -1,19 +1,18 @@
 #include "main.h"
+#include "pros/adi.hpp"
 
 pros::Controller master(CONTROLLER_MASTER);
 
 void initialize() {
-	//autonomous selector library
-	const char *selectorNames[] = {"Front","Back","Do Nothing",""};
-	selector::init(
-		360, // hue
-		1, // default auton
-		selectorNames
-	);
+	// autonomous selector library
+	const char* selectorNames[] = {"Front", "Back", "Do Nothing", ""};
+	selector::init(360, // hue
+	               1,   // default auton
+	               selectorNames);
 
 	chassis::init();
 
-	//subsystems
+	// subsystems
 	intake::init();
 	indexer::init();
 	ejector::init();
@@ -40,6 +39,7 @@ void autonomous() {
 }
 
 void opcontrol() {
+	ADIAnalogIn line_sensor('b');
 	while (true) {
 		// button to start autonomous for testing
 		if (master.get_digital(DIGITAL_LEFT) && !competition::is_connected())
@@ -48,19 +48,21 @@ void opcontrol() {
 		// intake
 		intake::opcontrol();
 
-		//roller
+		// roller
 		ejector::opcontrol();
 
-		//indexer
+		// indexer
 		indexer::opcontrol();
 
-		//transmission
+		// transmission
 		transmission::opcontrol();
 
 		// chassis
 		chassis::arcade(master.get_analog(ANALOG_LEFT_Y) * (double)100 / 127,
-		       master.get_analog(ANALOG_RIGHT_X) * (double)100 / 127);
+		                master.get_analog(ANALOG_RIGHT_X) * (double)100 / 127);
 
 		delay(20);
+
+		printf("%i\n", line_sensor.get_value());
 	}
 }
