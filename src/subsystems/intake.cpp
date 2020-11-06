@@ -17,9 +17,9 @@ void move(int speed) {
 void opcontrol() {
 	static int speed;
 
-	if (master.get_digital(DIGITAL_R1)) //intake
+	if (master.get_digital(DIGITAL_R1)) // intake
 		speed = 100;
-	else if (master.get_digital(DIGITAL_R2)) //run intake motors out
+	else if (master.get_digital(DIGITAL_R2)) // run intake motors out
 		speed = -100;
 	else
 		speed = 0;

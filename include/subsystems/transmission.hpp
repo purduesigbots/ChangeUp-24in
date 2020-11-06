@@ -5,10 +5,10 @@
 
 namespace transmission {
 
-    extern pros::ADIDigitalOut piston;
-    void change();
-    void opcontrol();
+extern pros::ADIDigitalOut piston;
+void change();
+void opcontrol();
 
-}
+} // namespace transmission
 
 #endif
