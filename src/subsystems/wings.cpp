@@ -2,14 +2,12 @@
 
 namespace wings {
 
-ADIDigitalOut piston1('g');
-ADIDigitalOut piston2('h');
+ADIDigitalOut piston('g');
 
 void toggle() {
 	static bool currVal = false;
 	currVal = !currVal;
-	piston1.set_value(currVal);
-	piston2.set_value(currVal);
+	piston.set_value(currVal);
 }
 
 void opcontrol() {
