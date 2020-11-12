@@ -10,6 +10,7 @@
 #include "subsystems/ejector.hpp"
 #include "subsystems/indexer.hpp"
 #include "subsystems/intake.hpp"
+#include "subsystems/sensors.hpp"
 #include "subsystems/transmission.hpp"
 #include "subsystems/wings.hpp"
 
