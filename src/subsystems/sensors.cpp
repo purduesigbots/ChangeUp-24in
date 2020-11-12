@@ -18,7 +18,7 @@ bool lineDetect() {
 }
 
 bool colorDetect() {
-	if (selector::auton > 0)
+	if (selector::auton < 0)
 		return (color.get_hue() <= RED) ? true : false;
 	else
 		return (color.get_hue() >= BLUE) ? true : false;
