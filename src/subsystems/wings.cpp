@@ -1,8 +1,8 @@
 #include "main.h"
 
-namespace transmission {
+namespace wings {
 
-ADIDigitalOut piston('a');
+ADIDigitalOut piston('g');
 
 void toggle() {
 	static bool currVal = false;
@@ -11,8 +11,8 @@ void toggle() {
 }
 
 void opcontrol() {
-	if (master.get_digital_new_press(DIGITAL_A))
+	if (master.get_digital_new_press(DIGITAL_B))
 		toggle();
 }
 
-} // namespace transmission
+} // namespace wings

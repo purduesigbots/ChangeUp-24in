@@ -3,13 +3,13 @@
 
 #include "okapi/api.hpp"
 
-namespace intake{
+namespace intake {
 
 extern okapi::MotorGroup motors;
 void init();
 void move(int speed);
 void opcontrol();
 
-}
+} // namespace intake
 
 #endif

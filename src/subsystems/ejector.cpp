@@ -2,7 +2,7 @@
 
 namespace ejector {
 
-okapi::MotorGroup motors = {-1, 2};
+okapi::MotorGroup motors = {-1, -2};
 
 void init() {
 	motors.setGearing(okapi::AbstractMotor::gearset::green);
@@ -21,12 +21,10 @@ void opcontrol() {
 		speed = 100;
 	else if (master.get_digital(DIGITAL_L2)) // outtake
 		speed = -100;
-	else if (master.get_digital(DIGITAL_R1)) { // run until dectected
-		speed = 100;
-	} else
+	else
 		speed = 0;
 
 	move(speed);
-}
+} // namespace ejector
 
 } // namespace ejector
