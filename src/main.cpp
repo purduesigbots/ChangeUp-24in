@@ -10,8 +10,7 @@ void initialize() {
 	               selectorNames);
 
 	chassis::init();
-
-	// subsystems
+	sensors::init();
 	intake::init();
 	indexer::init();
 	ejector::init();
@@ -63,6 +62,5 @@ void opcontrol() {
 		                master.get_analog(ANALOG_RIGHT_X) * (double)100 / 127);
 
 		delay(20);
-
 	}
 }

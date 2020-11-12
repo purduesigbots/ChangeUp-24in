@@ -15,7 +15,7 @@ void red() {
 	// Move to intake 2nd ball
 	chassis::move(29, 65);
 	delay(100);
-	indexer::runUntilFull();
+	runUntilFull();
 
 	// Align corner goal
 	chassis::move(-30, 65);
@@ -28,7 +28,7 @@ void red() {
 
 	// Score first 2 balls
 	chassis::fast(3, 50);
-	indexer::score(2);
+	score(2);
 	intake::move(0);
 
 	// Reverse to let balls drop down
@@ -40,7 +40,7 @@ void red() {
 	chassis::move(8, 30);
 	delay(300);
 	intake::move(0);
-	indexer::score();
+	score();
 	delay(500);
 
 	// Back away from goal
