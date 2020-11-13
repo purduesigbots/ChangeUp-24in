@@ -43,7 +43,7 @@ namespace selector {
 #define DEFAULT 1
 
 // Names of autonomi, up to 10
-#define AUTONS "Front", "Back", "Do Nothing"
+#define AUTONS "Main Auton", "Do Nothing"
 
 } // namespace selector
 
