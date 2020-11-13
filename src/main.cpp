@@ -4,11 +4,7 @@ pros::Controller master(CONTROLLER_MASTER);
 
 void initialize() {
 	// autonomous selector library
-	const char* selectorNames[] = {"Front", "Back", "Do Nothing", ""};
-	selector::init(360, // hue
-	               1,   // default auton
-	               selectorNames);
-
+	selector::init();
 	chassis::init();
 	sensors::init();
 	intake::init();
