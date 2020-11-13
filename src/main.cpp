@@ -6,7 +6,7 @@ void initialize() {
 	// autonomous selector library
 	const char* selectorNames[] = {"Front", "Back", "Do Nothing", ""};
 	selector::init(360, // hue
-	               1,   // default auton
+	               -1,  // default auton
 	               selectorNames);
 
 	chassis::init();
