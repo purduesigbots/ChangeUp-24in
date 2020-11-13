@@ -2,7 +2,7 @@
 
 namespace sensors {
 
-#define LINE_THRESHOLD 2880
+#define LINE_THRESHOLD 2860
 #define BLUE 210
 #define RED 25
 

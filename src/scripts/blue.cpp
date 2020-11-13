@@ -1,5 +1,8 @@
+#include "macros.hpp"
 #include "main.h"
 
 void blue() {
-	chassis::move(48);
+	intake::move(100);
+	score(2);
+	// chassis::move(72);
 }
