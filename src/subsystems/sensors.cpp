@@ -17,8 +17,8 @@ bool lineDetect() {
 	return (line_sensor.get_value() < LINE_THRESHOLD);
 }
 
-bool colorDetect() {
-	if (selector::auton < 0)
+bool colorDetect(bool invert) {
+	if ((selector::auton < 0 && !invert) || (selector::auton > 0 && invert))
 		return (color.get_hue() <= RED) ? true : false;
 	else
 		return (color.get_hue() >= BLUE) ? true : false;

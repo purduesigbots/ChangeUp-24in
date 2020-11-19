@@ -9,26 +9,25 @@ namespace chassis {
 #define RIGHT_MOTORS 12, -13, 14
 #define GEARSET 200 // rpm of chassis motors
 
-#define DISTANCE_CONSTANT                                                      \
-	34.94                     // ticks per distance unit, the default is a inch
-#define DEGREE_CONSTANT 5.9 // ticks per degree
+#define DISTANCE_CONSTANT 37 // ticks per distance unit, the default is a inch
+#define DEGREE_CONSTANT 5.9  // ticks per degree
 
 // chassis settling constants
-#define SETTLE_COUNT 8
+#define SETTLE_COUNT 12
 #define SETTLE_THRESHOLD_LINEAR 3
 #define SETTLE_THRESHOLD_ANGULAR 1
 
 // slew control (autonomous only)
-#define ACCEL_STEP 6    // smaller number = more slew
+#define ACCEL_STEP 4    // smaller number = more slew
 #define DECCEL_STEP 200 // 200 = no slew
 #define ARC_STEP 8      // acceleration for arcs
 #define MIN_SPEED 15
 
 // pid constants
-#define LINEAR_KP .3
-#define LINEAR_KD .5
-#define TURN_KP 1
-#define TURN_KD 2
+#define LINEAR_KP .1
+#define LINEAR_KD 1
+#define TURN_KP 2
+#define TURN_KD 8
 #define ARC_KP .05
 #define DIF_KP .05
 
