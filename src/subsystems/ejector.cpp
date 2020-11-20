@@ -2,16 +2,16 @@
 
 namespace ejector {
 
-okapi::MotorGroup motors = {-1, -2};
+okapi::MotorGroup motor = {2};
 
 void init() {
-	motors.setGearing(okapi::AbstractMotor::gearset::green);
-	motors.setBrakeMode(okapi::AbstractMotor::brakeMode::hold);
-	motors.setEncoderUnits(okapi::AbstractMotor::encoderUnits::degrees);
+	motor.setGearing(okapi::AbstractMotor::gearset::green);
+	motor.setBrakeMode(okapi::AbstractMotor::brakeMode::hold);
+	motor.setEncoderUnits(okapi::AbstractMotor::encoderUnits::degrees);
 }
 
 void move(int speed) {
-	motors.moveVoltage(speed * 120);
+	motor.moveVoltage(speed * 120);
 }
 
 void opcontrol() {
