@@ -12,6 +12,7 @@ void score(int num) {
 	int i = 0;
 	bool detected = sensors::lineDetect();
 
+	flywheel::move(100);
 	ejector::move(100);
 	indexer::move(100);
 
@@ -30,4 +31,5 @@ void score(int num) {
 	indexer::move(0);
 	delay(200);
 	ejector::move(0);
+	flywheel::move(0);
 }
