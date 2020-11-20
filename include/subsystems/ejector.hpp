@@ -5,7 +5,7 @@
 
 namespace ejector {
 
-extern okapi::MotorGroup motors;
+extern okapi::MotorGroup motor;
 void init();
 void move(int speed);
 void opcontrol();

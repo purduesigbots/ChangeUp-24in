@@ -4,6 +4,10 @@ namespace wings {
 
 ADIDigitalOut piston('g');
 
+void init() {
+	toggle();
+}
+
 void toggle() {
 	static bool currVal = false;
 	currVal = !currVal;
