@@ -10,6 +10,8 @@ void initialize() {
 	intake::init();
 	indexer::init();
 	ejector::init();
+	flywheel::init();
+	wings::init();
 }
 
 void disabled() {
@@ -41,8 +43,11 @@ void opcontrol() {
 		// intake
 		intake::opcontrol();
 
-		// roller
+		// ejector
 		ejector::opcontrol();
+
+		// flywheel
+		flywheel::opcontrol();
 
 		// indexer
 		indexer::opcontrol();
