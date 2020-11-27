@@ -1,7 +1,8 @@
 #include "main.h"
+#include "subsystems/sensors.hpp"
 
 void runUntilFull() {
-	while (sensors::lineDetect()) {
+	while (!sensors::lineDetect()) {
 		indexer::move(100);
 	}
 	indexer::move(0);
@@ -9,15 +10,26 @@ void runUntilFull() {
 
 void score(int num) {
 	int i = 0;
+	bool detected = sensors::lineDetect();
+
+	flywheel::move(100);
+	ejector::move(100);
+	indexer::move(100);
+
 	while (i < num) {
-		runUntilFull();
-		while (sensors::lineDetect()) {
-			ejector::move(100);
-			indexer::move(100);
+		delay(10);
+		if (sensors::lineDetect()) {
+			if (!detected)
+				detected = true;
+		} else {
+			if (detected) {
+				detected = false;
+				i += 1;
+			}
 		}
-		delay(500);
-		ejector::move(0);
-		indexer::move(0);
-		i += 1;
 	}
+	indexer::move(0);
+	delay(200);
+	ejector::move(0);
+	flywheel::move(0);
 }
