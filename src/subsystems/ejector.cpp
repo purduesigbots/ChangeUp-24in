@@ -2,6 +2,8 @@
 
 namespace ejector {
 
+#define EJECT_TIME 250 // in milliseconds
+
 okapi::MotorGroup motor = {2};
 
 void init() {
@@ -16,16 +18,26 @@ void move(int speed) {
 
 void opcontrol() {
 	static int speed;
-	if (master.get_digital(DIGITAL_L2) || sensors::colorDetect()) // outtake
+	static int count;
+
+	// increase count with time
+	if(count > 0)
+		count -= 20;
+
+	if (master.get_digital(DIGITAL_L2) || sensors::colorDetect()) {
 		speed = -100;
-	else if (master.get_digital(DIGITAL_L1)) // score
+		count = EJECT_TIME;
+	}else if (count > 0) {
+		speed = -100;
+	}else if (master.get_digital(DIGITAL_L1)) {
 		speed = 100;
-	else if (master.get_digital(DIGITAL_R1) && !sensors::lineDetect()) {
+	}else if (master.get_digital(DIGITAL_R1) && !sensors::lineDetect()) {
 		speed = 50;
-	} else
+	} else {
 		speed = 0;
+	}
 
 	move(speed);
-} // namespace ejector
+}
 
 } // namespace ejector

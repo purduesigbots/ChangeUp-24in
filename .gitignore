@@ -17,3 +17,4 @@ temp.errors
 .clangd/
 .ccls-cache/
 .DS_Store
+.zip
