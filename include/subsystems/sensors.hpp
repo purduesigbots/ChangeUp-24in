@@ -5,7 +5,8 @@ namespace sensors {
 
 void init();
 bool colorDetect(bool invert = false);
-bool lineDetect();
+bool flywheelDetect();
+bool ejectDetect();
 
 } // namespace sensors
 #endif

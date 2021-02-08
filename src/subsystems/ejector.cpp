@@ -18,20 +18,20 @@ void move(int speed) {
 
 void opcontrol() {
 	static int speed;
-	static int count;
+	static bool eject;
 
-	// increase count with time
-	if (count > 0)
-		count -= 20;
+	if (sensors::colorDetect())
+		eject = true;
+	else if (sensors::ejectDetect())
+		eject = false;
 
-	if (master.get_digital(DIGITAL_L2) || sensors::colorDetect()) {
+	if (master.get_digital(DIGITAL_L2)) {
 		speed = -100;
-		count = EJECT_TIME;
-	} else if (count > 0) {
+	} else if (eject) {
 		speed = -100;
 	} else if (master.get_digital(DIGITAL_L1)) {
 		speed = 100;
-	} else if (master.get_digital(DIGITAL_R1) && !sensors::lineDetect()) {
+	} else if (master.get_digital(DIGITAL_R1) && !sensors::flywheelDetect()) {
 		speed = 50;
 	} else {
 		speed = 0;
