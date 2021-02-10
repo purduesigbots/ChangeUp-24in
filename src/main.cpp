@@ -3,7 +3,7 @@
 
 pros::Controller master(CONTROLLER_MASTER);
 
-              void initialize() {
+void initialize() {
 	// autonomous selector library
 	selector::init();
 	chassis::init();
