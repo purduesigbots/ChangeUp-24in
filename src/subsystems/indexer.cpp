@@ -18,9 +18,13 @@ void opcontrol() {
 	static int speed;
 	static bool detected = false;
 
+	/* no color sensor
 	if (sensors::colorDetect())
-		speed = 100;
-	else if (master.get_digital(DIGITAL_L1)) // score ball
+	  speed = 100;
+	else
+	*/
+
+	if (master.get_digital(DIGITAL_L1)) // score ball
 		speed = 100;
 	else if (master.get_digital(DIGITAL_L2)) // outtake
 		speed = 100;

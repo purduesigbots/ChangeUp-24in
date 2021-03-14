@@ -20,10 +20,12 @@ void opcontrol() {
 	static int speed;
 	static bool eject;
 
+	/* No color sensor
 	if (sensors::colorDetect())
-		eject = true;
+	  eject = true;
 	else if (sensors::ejectDetect())
-		eject = false;
+	  eject = false;
+	*/
 
 	if (master.get_digital(DIGITAL_L2)) {
 		speed = -100;
