@@ -2,7 +2,7 @@
 
 namespace sensors {
 
-#define FLYWHEEL_THRESHOLD 2860
+#define FLYWHEEL_THRESHOLD 2775
 #define EJECT_THRESHOLD 2820
 #define BLUE 150
 #define RED 25
