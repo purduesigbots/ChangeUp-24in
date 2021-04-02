@@ -1,4 +1,5 @@
 #include "main.h"
+#include "pros/misc.h"
 
 namespace indexer {
 
@@ -18,18 +19,16 @@ void opcontrol() {
 	static int speed;
 	static bool detected = false;
 
-	/* no color sensor
 	if (sensors::colorDetect())
-	  speed = 100;
-	else
-	*/
-
-	if (master.get_digital(DIGITAL_L1)) // score ball
+		speed = 50;
+	else if (master.get_digital(DIGITAL_L1)) // score ball
 		speed = 100;
 	else if (master.get_digital(DIGITAL_L2)) // outtake
 		speed = 100;
 	else if (master.get_digital(DIGITAL_R1)) { // run until dectected
 		speed = 50;
+	} else if (master.get_digital(DIGITAL_RIGHT)) {
+		speed = -100;
 	} else
 		speed = 0;
 

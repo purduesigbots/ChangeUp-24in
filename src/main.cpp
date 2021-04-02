@@ -6,13 +6,35 @@ pros::Controller master(CONTROLLER_MASTER);
 void initialize() {
 	// autonomous selector library
 	selector::init();
-	chassis::init();
+	wings::init();
+
+	chassis::init({-17, 18, -19}, {12, -13, 14}, // motors
+	              200,                           // gearset
+	              41.45, 1,                      // TPU
+	              12,                            // setle time
+	              6, 5,                          // linear/angular thresholds
+	              2, 2,                          // regular/arc slew
+	              16,                            // imu port
+	              {0, 0, 0},                     // encoder ports
+	              0,                             // expander port
+	              10                             // joystick threshold
+	);
+
+	pid::init(false,   // debug output
+	          .3, .5,  // linear constants
+	          2.5, 20, // angular contants
+	          4, 0,    // linear point constants
+	          50, 0,   // angular point constants
+	          .05,     // arc kp
+	          .5,      // dif kp
+	          1        // min error
+	);
+
 	sensors::init();
 	intake::init();
 	indexer::init();
 	ejector::init();
 	flywheel::init();
-	wings::init();
 }
 
 void disabled() {

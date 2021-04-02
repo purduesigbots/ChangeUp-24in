@@ -6,10 +6,14 @@ namespace ejector {
 
 okapi::MotorGroup motor = {2};
 
+int c;
+
 void init() {
 	motor.setGearing(okapi::AbstractMotor::gearset::green);
 	motor.setBrakeMode(okapi::AbstractMotor::brakeMode::hold);
 	motor.setEncoderUnits(okapi::AbstractMotor::encoderUnits::degrees);
+
+	c = 0;
 }
 
 void move(int speed) {
@@ -20,12 +24,22 @@ void opcontrol() {
 	static int speed;
 	static bool eject;
 
-	/* No color sensor
-	if (sensors::colorDetect())
-	  eject = true;
-	else if (sensors::ejectDetect())
-	  eject = false;
-	*/
+	if (sensors::colorDetect()) {
+		c = 0;
+		eject = true;
+	} else if (sensors::ejectDetect()) {
+		c = 0;
+		eject = false;
+	}
+
+	if (eject) {
+		c += 10;
+	}
+
+	if (c > 1500 && eject) {
+		eject = false;
+		c = 0;
+	}
 
 	if (master.get_digital(DIGITAL_L2)) {
 		speed = -100;
