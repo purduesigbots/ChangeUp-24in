@@ -60,7 +60,7 @@ void autonomous() {
 void opcontrol() {
 	while (true) {
 		// button to start autonomous for testing
-		if (master.get_digital(DIGITAL_LEFT) && !competition::is_connected())
+		if (master.get_digital(DIGITAL_RIGHT) && !competition::is_connected())
 			autonomous();
 
 		// intake
