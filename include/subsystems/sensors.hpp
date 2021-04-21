@@ -7,6 +7,7 @@ void init();
 bool colorDetect(bool invert = false);
 bool flywheelDetect();
 bool ejectDetect();
+double getUltrasonicDist();
 
 } // namespace sensors
 #endif

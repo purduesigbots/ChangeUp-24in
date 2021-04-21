@@ -1,5 +1,6 @@
 #include "main.h"
 #include "ARMS/chassis.h"
+#include "subsystems/sensors.hpp"
 
 pros::Controller master(CONTROLLER_MASTER);
 
@@ -12,7 +13,7 @@ void initialize() {
 	              200,                           // gearset
 	              41.45, 1,                      // TPU
 	              12,                            // setle time
-	              6, 5,                          // linear/angular thresholds
+	              2, 1,                          // linear/angular thresholds
 	              2, 2,                          // regular/arc slew
 	              16,                            // imu port
 	              {0, 0, 0},                     // encoder ports
@@ -21,7 +22,7 @@ void initialize() {
 	);
 
 	pid::init(false,   // debug output
-	          .3, .5,  // linear constants
+	          .3, 1,   // linear constants
 	          2.5, 20, // angular contants
 	          4, 0,    // linear point constants
 	          50, 0,   // angular point constants
@@ -86,5 +87,6 @@ void opcontrol() {
 		                master.get_analog(ANALOG_RIGHT_X) * (double)100 / 127);
 
 		delay(20);
+		printf("%lf\n", sensors::getUltrasonicDist());
 	}
 }

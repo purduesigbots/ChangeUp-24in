@@ -1,4 +1,5 @@
 #include "main.h"
+#include "pros/adi.hpp"
 
 namespace sensors {
 
@@ -9,6 +10,7 @@ namespace sensors {
 
 ADIAnalogIn flywheel_sensor('b');
 ADIAnalogIn eject_sensor('h');
+ADIUltrasonic ultrasonic('c', 'd');
 Optical color(5);
 
 void init() {
@@ -28,6 +30,10 @@ bool colorDetect(bool invert) {
 		return (color.get_hue() <= RED) ? true : false;
 	else
 		return (color.get_hue() >= BLUE) ? true : false;
+}
+
+double getUltrasonicDist() {
+	return ultrasonic.get_value() / 10 / 2.54;
 }
 
 } // namespace sensors

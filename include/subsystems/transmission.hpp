@@ -6,7 +6,7 @@
 namespace transmission {
 
 extern pros::ADIDigitalOut piston;
-void change();
+void toggle();
 void opcontrol();
 
 } // namespace transmission
