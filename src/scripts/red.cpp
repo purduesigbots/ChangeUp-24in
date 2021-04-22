@@ -72,17 +72,20 @@ void red() {
 	wallAlignTo(24);
 	chassis::move(51, 50);
 	intake::move(100);
+	ejector::move(-100);
+	indexer::move(50);
 	chassis::turnAbsolute(0);
-	chassis::move(32);
+	chassis::move(36, 40);
 	transmission::toggle();
 	chassis::setBrakeMode(okapi::AbstractMotor::brakeMode::hold);
 
 	// Make sure center is red or neutral
 	while (!sensors::colorDetect(true)) {
-		indexer::move(100);
 		ejector::move(-100);
+		indexer::move(50);
 		delay(10);
 	}
+	indexer::move(100);
 	ejector::move(100);
 	runUntilFull();
 	score(1);
@@ -97,5 +100,5 @@ void red() {
 	// Reverse off of goal
 	chassis::setBrakeMode(okapi::AbstractMotor::brakeMode::coast);
 	transmission::toggle();
-	chassis::move(-24);
+	chassis::move(-18);
 }

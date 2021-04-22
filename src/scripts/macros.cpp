@@ -34,6 +34,10 @@ void score(int num) {
 				i += 1;
 			}
 		}
+
+		if (sensors::colorDetect()) {
+			break;
+		}
 	}
 	indexer::move(0);
 	delay(100);
