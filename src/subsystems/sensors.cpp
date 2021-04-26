@@ -4,12 +4,13 @@
 namespace sensors {
 
 #define FLYWHEEL_THRESHOLD 2775
-#define EJECT_THRESHOLD 2785
+#define EJECT_THRESHOLD 2600
 #define BLUE 150
 #define RED 25
 
 ADIAnalogIn flywheel_sensor('b');
-ADIAnalogIn eject_sensor('h');
+ADIAnalogIn eject_sensor1('h');
+ADIAnalogIn eject_sensor2('e');
 ADIUltrasonic ultrasonic('c', 'd');
 Optical color(5);
 
@@ -22,7 +23,8 @@ bool flywheelDetect() {
 }
 
 bool ejectDetect() {
-	return (eject_sensor.get_value() < EJECT_THRESHOLD);
+	return (eject_sensor1.get_value() < EJECT_THRESHOLD ||
+	        eject_sensor2.get_value() < EJECT_THRESHOLD);
 }
 
 bool colorDetect(bool invert) {
