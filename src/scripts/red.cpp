@@ -17,6 +17,8 @@ void red() {
 	int start = millis();
 
 	// Start Intake
+	indexer::move(40);
+	ejector::move(40);
 	intake::move(100);
 
 	// Move to intake 1st auton line ball
@@ -28,7 +30,7 @@ void red() {
 	chassis::turnAbsolute(90);
 	intake::move(0);
 	wings::toggle();
-	chassis::move(32, 70);
+	chassis::move(30, 70);
 	wings::toggle();
 
 	// Turn and align with home row goal
@@ -37,7 +39,7 @@ void red() {
 	chassis::move(26, 50);
 	chassis::turnAbsolute(180);
 	intake::move(0);
-	chassis::move(18, 50);
+	chassis::move(20, 50);
 
 	// Score in home row
 	score();
@@ -70,12 +72,12 @@ void red() {
 	// Move to center
 	chassis::turnAbsolute(90, 50);
 	wallAlignTo(24);
-	chassis::move(51, 50);
+	chassis::move(46, 50);
 	intake::move(100);
 	ejector::move(-100);
 	indexer::move(50);
-	chassis::turnAbsolute(0);
-	chassis::move(36, 40);
+	chassis::turnAbsolute(1);
+	chassis::move(38, 40);
 	transmission::toggle();
 	chassis::setBrakeMode(okapi::AbstractMotor::brakeMode::hold);
 
