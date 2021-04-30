@@ -13,6 +13,7 @@
 #include "subsystems/intake.hpp"
 #include "subsystems/sensors.hpp"
 #include "subsystems/transmission.hpp"
+#include "subsystems/wallhook.hpp"
 #include "subsystems/wings.hpp"
 
 // scripts
