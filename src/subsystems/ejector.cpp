@@ -27,16 +27,13 @@ void opcontrol() {
 	if (sensors::colorDetect()) {
 		c = 0;
 		eject = true;
-	} else if (sensors::ejectDetect()) {
-		c = 0;
-		eject = false;
 	}
 
 	if (eject) {
 		c += 10;
 	}
 
-	if (c > 1500 && eject) {
+	if (c > 100 && eject) {
 		eject = false;
 		c = 0;
 	}
