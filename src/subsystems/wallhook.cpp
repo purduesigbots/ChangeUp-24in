@@ -17,7 +17,7 @@ void move(int speed) {
 void opcontrol() {
 	static int speed;
 
-	if (master.get_digital(DIGITAL_A))
+	if (master.get_digital(DIGITAL_Y))
 		speed = 100;
 	else if (master.get_digital(DIGITAL_X))
 		speed = -100;
