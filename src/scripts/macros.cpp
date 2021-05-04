@@ -2,13 +2,15 @@
 #include "main.h"
 #include "subsystems/sensors.hpp"
 
+bool filtering = false;
+
 void runUntilFull() {
 	int c = 0;
 	while (!sensors::flywheelDetect()) {
 		indexer::move(100);
 		delay(10);
 		c += 10;
-		if (c > 2000) {
+		if (c > 1000) {
 			break;
 		}
 	}
@@ -16,6 +18,7 @@ void runUntilFull() {
 }
 
 void score(int num) {
+	int c = 0;
 	int i = 0;
 	bool detected = sensors::flywheelDetect();
 
@@ -23,8 +26,9 @@ void score(int num) {
 	ejector::move(100);
 	indexer::move(100);
 
-	while (i < num) {
+	while (i < num && c < 1500) {
 		delay(10);
+		c += 10;
 		if (sensors::flywheelDetect()) {
 			if (!detected)
 				detected = true;
@@ -64,11 +68,19 @@ void wallAlignTo(double target) {
 			totalError = 0;
 		}
 
-		double speed = error * 3 + (error - prevError) * 12 + totalError * 0.01;
+		double speed = error * 3 + (error - prevError) * 14 + totalError * 0.03;
 
-		chassis::tank(speed, speed);
+		int min = 15;
+		if (abs(speed) < min) {
+			if (speed < 0)
+				speed = -min;
+			else
+				speed = min;
+		}
 
-		if (abs(error) < 2) {
+		if (fabs(error) < .5) {
+			if (fabs(error) < .3)
+				speed = 0;
 			c += 10;
 			if (c > 300)
 				break;
@@ -76,8 +88,44 @@ void wallAlignTo(double target) {
 			c = 0;
 		}
 
+		chassis::tank(speed, speed);
+
 		delay(10);
 
 		prevError = error;
 	}
+}
+
+void filter() {
+	bool eject = false;
+	int c = 0;
+	while (filtering) {
+		if (sensors::colorDetect()) {
+			c = 0;
+			eject = true;
+		}
+
+		if (c > 100 && eject) {
+			eject = false;
+			c = 0;
+		}
+
+		if (eject) {
+			ejector::move(-100);
+			c += 10;
+		} else {
+			ejector::move(100);
+		}
+
+		delay(10);
+	}
+}
+
+void startFilter() {
+	filtering = true;
+	Task filterTask(filter);
+}
+
+void endFilter() {
+	filtering = false;
 }

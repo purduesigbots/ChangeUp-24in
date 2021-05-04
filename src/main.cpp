@@ -22,8 +22,8 @@ void initialize() {
 	);
 
 	pid::init(false,  // debug output
-	          .3, 1,  // linear constants
-	          2.5, 8, // angular contants
+	          .28, 1, // linear constants
+	          2.1, 8, // angular contants
 	          4, 0,   // linear point constants
 	          50, 0,  // angular point constants
 	          .05,    // arc kp
