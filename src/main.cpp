@@ -6,7 +6,7 @@ pros::Controller master(CONTROLLER_MASTER);
 
 void initialize() {
 	// autonomous selector library
-	selector::init();
+	selector::init(360, -1);
 	wings::init();
 
 	chassis::init({-17, 18, -19}, {12, -13, 14}, // motors
@@ -21,14 +21,14 @@ void initialize() {
 	              10                             // joystick threshold
 	);
 
-	pid::init(false,  // debug output
-	          .28, 1, // linear constants
-	          2.1, 8, // angular contants
-	          4, 0,   // linear point constants
-	          50, 0,  // angular point constants
-	          .05,    // arc kp
-	          0,      // dif kp
-	          1       // min error
+	pid::init(false,           // debug output
+	          .28, 0, 1,       // linear constants
+	          16.00, 0.1, 120, // angular contants
+	          4, 0,            // linear point constants
+	          50, 0,           // angular point constants
+	          .05,             // arc kp
+	          0,               // dif kp
+	          1                // min error
 	);
 
 	sensors::init();
@@ -90,6 +90,6 @@ void opcontrol() {
 		                master.get_analog(ANALOG_RIGHT_X) * (double)100 / 127);
 
 		delay(20);
-		printf("%lf\n", sensors::getUltrasonicDist());
+		// printf("%lf\n", sensors::getUltrasonicDist());
 	}
 }
