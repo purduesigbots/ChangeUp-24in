@@ -2,6 +2,10 @@
 #include "main.h"
 
 void blue() {
+	red(); // run same as red with color sensor flipped
+}
+
+void pidTuner() {
 	// chassis::turnAbsoluteAsync(90);
 	int current = 1;
 	double increments[3] = {.01, .1, 1};
