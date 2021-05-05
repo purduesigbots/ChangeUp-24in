@@ -38,8 +38,8 @@ void red() {
 	// Turn and align with home row goal
 	chassis::move(-2);
 	chassis::turnAbsolute(150);
-	chassis::move(21, 50);
-	chassis::turnAbsolute(180);
+	chassis::move(26, 50);
+	chassis::turnAbsolute(178);
 	intake::move(0);
 	chassis::move(22, 50);
 
@@ -51,10 +51,10 @@ void red() {
 	intake::move(100);
 	runUntilFull();
 	chassis::turnAbsolute(-90);
-	chassis::move(48, 60);
+	chassis::move(51, 60);
 
 	// Align with corner goal
-	chassis::turnAbsolute(-141, 70);
+	chassis::turnAbsolute(-143, 70);
 
 	// Score 3 in corner goal
 	chassis::move(30, 50);
@@ -74,13 +74,13 @@ void red() {
 	intake::move(0);
 
 	// Move to center
-	chassis::turnAbsolute(90, 50);
+	chassis::turnAbsolute(90);
 	wallAlignTo(24);
 	chassis::move(46.5, 50);
 	intake::move(100);
 	indexer::move(50);
 	startFilter();
-	chassis::turnAbsolute(2.3);
+	chassis::turnAbsolute(0);
 	chassis::move(48, 40);
 	chassis::setBrakeMode(okapi::AbstractMotor::brakeMode::hold);
 

@@ -6,13 +6,13 @@ pros::Controller master(CONTROLLER_MASTER);
 
 void initialize() {
 	// autonomous selector library
-	selector::init(360, -1);
+	selector::init(360, 1);
 	wings::init();
 
 	chassis::init({-17, 18, -19}, {12, -13, 14}, // motors
 	              200,                           // gearset
 	              50.5, 1,                       // TPU
-	              12,                            // setle time
+	              10,                            // setle time
 	              1, 1,                          // linear/angular thresholds
 	              2, 2,                          // regular/arc slew
 	              16,                            // imu port
@@ -21,14 +21,16 @@ void initialize() {
 	              10                             // joystick threshold
 	);
 
-	pid::init(false,           // debug output
-	          .28, 0, 1,       // linear constants
-	          16.00, 0.1, 120, // angular contants
-	          4, 0,            // linear point constants
-	          50, 0,           // angular point constants
-	          .05,             // arc kp
-	          0,               // dif kp
-	          1                // min error
+	// Ziegler-Nichols method PID tuning
+
+	pid::init(false,        // debug output
+	          .28, 0, 1,    // linear constants
+	          4, .0110, 90, // angular contants
+	          4, 0,         // linear point constants
+	          50, 0,        // angular point constants
+	          .05,          // arc kp
+	          0,            // dif kp
+	          1             // min error
 	);
 
 	sensors::init();
