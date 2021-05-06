@@ -23,14 +23,14 @@ void initialize() {
 
 	// Ziegler-Nichols method PID tuning
 
-	pid::init(false,     // debug output
-	          .28, 0, 1, // linear constants
-	          4, 0, 90,  // angular contants
-	          4, 0, 0,   // linear point constants
-	          50, 0, 0,  // angular point constants
-	          .05,       // arc kp
-	          2,         // dif kp
-	          1          // min error
+	pid::init(false,         // debug output
+	          .15, 0, 1.5,   // linear constants
+	          4, 0.0013, 45, // angular contants
+	          4, 0, 0,       // linear point constants
+	          50, 0, 0,      // angular point constants
+	          .05,           // arc kp
+	          1.2,           // dif kp
+	          1              // min error
 	);
 
 	sensors::init();
@@ -47,19 +47,17 @@ void competition_initialize() {
 }
 
 void autonomous() {
-	chassis::move(-48, 50);
-	chassis::move(48, 50);
-	// switch (selector::auton) {
-	// case -1:
-	// 	blue();
-	// 	break;
-	// case 1:
-	// 	red();
-	// 	break;
-	// case 0:
-	// 	skills();
-	// 	break;
-	// }
+	switch (selector::auton) {
+	case -1:
+		blue();
+		break;
+	case 1:
+		red();
+		break;
+	case 0:
+		skills();
+		break;
+	}
 }
 
 void opcontrol() {
