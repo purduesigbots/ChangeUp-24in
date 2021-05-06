@@ -14,7 +14,7 @@ void initialize() {
 	              50.5, 1,                       // TPU
 	              10,                            // setle time
 	              1, 1,                          // linear/angular thresholds
-	              2, 2,                          // regular/arc slew
+	              8, 2,                          // regular/arc slew
 	              16,                            // imu port
 	              {0, 0, 0},                     // encoder ports
 	              0,                             // expander port
@@ -23,14 +23,14 @@ void initialize() {
 
 	// Ziegler-Nichols method PID tuning
 
-	pid::init(false,        // debug output
-	          .28, 0, 1,    // linear constants
-	          4, .0110, 90, // angular contants
-	          4, 0,         // linear point constants
-	          50, 0,        // angular point constants
-	          .05,          // arc kp
-	          0,            // dif kp
-	          1             // min error
+	pid::init(false,     // debug output
+	          .28, 0, 1, // linear constants
+	          4, 0, 90,  // angular contants
+	          4, 0, 0,   // linear point constants
+	          50, 0, 0,  // angular point constants
+	          .05,       // arc kp
+	          2,         // dif kp
+	          1          // min error
 	);
 
 	sensors::init();
@@ -47,17 +47,19 @@ void competition_initialize() {
 }
 
 void autonomous() {
-	switch (selector::auton) {
-	case -1:
-		blue();
-		break;
-	case 1:
-		red();
-		break;
-	case 0:
-		skills();
-		break;
-	}
+	chassis::move(-48, 50);
+	chassis::move(48, 50);
+	// switch (selector::auton) {
+	// case -1:
+	// 	blue();
+	// 	break;
+	// case 1:
+	// 	red();
+	// 	break;
+	// case 0:
+	// 	skills();
+	// 	break;
+	// }
 }
 
 void opcontrol() {
