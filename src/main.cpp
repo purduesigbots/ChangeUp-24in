@@ -11,7 +11,7 @@ void initialize() {
 
 	chassis::init({-17, 18, -19}, {12, -13, 14}, // motors
 	              200,                           // gearset
-	              50.5, 1,                       // TPU
+	              52, 1,                         // TPU
 	              10,                            // setle time
 	              1, 1,                          // linear/angular thresholds
 	              8, 2,                          // regular/arc slew

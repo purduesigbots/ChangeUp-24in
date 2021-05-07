@@ -76,7 +76,9 @@ void red() {
 	// Move to center
 	chassis::turnAbsolute(90);
 	wallAlignTo(24);
-	chassis::move(46.5, 50);
+	while ((millis() - start) <= 31000)
+		delay(10);
+	chassis::move(46, 50);
 	intake::move(100);
 	indexer::move(50);
 	startFilter();
