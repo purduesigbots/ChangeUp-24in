@@ -6,9 +6,9 @@
 namespace wallhook {
 
 extern okapi::MotorGroup motors;
+extern int speed;
 void init();
 void move(int speed);
-void opcontrol();
 
 } // namespace wallhook
 

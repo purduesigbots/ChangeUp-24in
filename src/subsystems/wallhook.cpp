@@ -3,6 +3,7 @@
 namespace wallhook {
 
 okapi::MotorGroup motors = {1};
+int speed = 0;
 
 void init() {
 	motors.setGearing(okapi::AbstractMotor::gearset::red);
@@ -11,22 +12,8 @@ void init() {
 }
 
 void move(int speed) {
+	wallhook::speed = speed;
 	motors.moveVoltage(speed * 120);
-}
-
-void opcontrol() {
-	static int speed;
-
-	if (master.get_digital(DIGITAL_Y))
-		speed = 100;
-	else if (master.get_digital(DIGITAL_X))
-		speed = -100;
-	else if (speed > 0)
-		speed = 25;
-	else
-		speed = -10;
-
-	move(speed);
 }
 
 } // namespace wallhook
