@@ -63,64 +63,65 @@ void opcontrol() {
 			autonomous();
 
 		// stop all subsystem motors
-		intake::move(0);
-		indexer::move(0);
-		flywheel::move(0);
+		intake::speed = 0;
+		indexer::speed = 0;
+		flywheel::speed = 0;
+		ejector::speed = 0;
 
 		// intake
 		if (master.get_digital(DIGITAL_R1)) {
-			intake::move(100);
-			indexer::move(50);
+			intake::speed = 100;
+			indexer::speed = 50;
 			if (!sensors::flywheelDetect())
-				ejector::move(50); // stop ejector when bot full
+				ejector::speed = 50; // stop ejector when bot full
 		}
 
 		// outtake
 		if (master.get_digital(DIGITAL_R2)) {
-			intake::move(-100);
+			intake::speed = -100;
 		}
 
 		// score
 		if (master.get_digital(DIGITAL_L1)) {
-			indexer::move(100);
-			flywheel::move(100);
-			ejector::move(100);
+			indexer::speed = 100;
+			flywheel::speed = 100;
+			ejector::speed = 100;
 		}
 
 		// manual eject
 		if (master.get_digital(DIGITAL_L2)) {
-			indexer::move(50);
-			ejector::move(-100);
+			indexer::speed = 50;
+			ejector::speed = -100;
 		}
 
 		// color sensor ejecting
 		static int ejectCount = 0;
 		if (sensors::colorDetect()) {
-			ejectCount = 100; // eject time 100 ms
-			indexer::move(50);
+			ejectCount = 200; // eject time 100 ms
+			indexer::speed = 50;
 		}
 		if (ejectCount > 0) {
 			ejectCount -= 10; // amount of ms passed
-			ejector::move(-100);
+			ejector::speed = -100;
 		}
 
 		// run indexer backwards
 		if (master.get_digital(DIGITAL_LEFT))
-			indexer::move(-100);
+			indexer::speed = -100;
 
 		// run flywheel backwards
 		if (master.get_digital(DIGITAL_UP))
-			flywheel::move(-100);
+			flywheel::speed = -100;
 
 		// wall hook
 		if (master.get_digital(DIGITAL_Y))
-			wallhook::move(100);
+			wallhook::speed = 100;
 		else if (master.get_digital(DIGITAL_X))
-			wallhook::move(-100);
+			wallhook::speed = -100;
 		else if (wallhook::speed > 0)
-			wallhook::move(25);
+			wallhook::speed = 25;
 		else
-			wallhook::move(-10);
+			wallhook::speed = -10;
 
 		// transmission
 		if (master.get_digital_new_press(DIGITAL_A))
@@ -134,6 +135,13 @@ void opcontrol() {
 		chassis::arcade(master.get_analog(ANALOG_LEFT_Y) * (double)100 / 127,
 		                master.get_analog(ANALOG_RIGHT_X) * (double)100 / 127);
 
-		delay(20);
+		// update each
+		intake::move(intake::speed);
+		indexer::move(indexer::speed);
+		flywheel::move(flywheel::speed);
+		ejector::move(ejector::speed);
+		wallhook::move(wallhook::speed);
+
+		delay(10);
 	}
 }
