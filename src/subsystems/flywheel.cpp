@@ -3,6 +3,7 @@
 namespace flywheel {
 
 okapi::MotorGroup motors = {-3, 6};
+int speed = 0;
 
 void init() {
 	motors.setGearing(okapi::AbstractMotor::gearset::green);
@@ -11,19 +12,8 @@ void init() {
 }
 
 void move(int speed) {
+	flywheel::speed = speed;
 	motors.moveVoltage(speed * 120);
-}
-
-void opcontrol() {
-	static int speed;
-	if (master.get_digital(DIGITAL_L1)) // score
-		speed = 100;
-	else if (master.get_digital(DIGITAL_UP)) {
-		speed = -100;
-	} else
-		speed = 0;
-
-	move(speed);
 }
 
 } // namespace flywheel

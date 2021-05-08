@@ -35,7 +35,7 @@ bool colorDetect(bool invert) {
 }
 
 double getUltrasonicDist() {
-	return ultrasonic.get_value() / 10 / 2.54;
+	return ultrasonic.get_value() / 10.0 / 2.54;
 }
 
 } // namespace sensors
