@@ -59,6 +59,7 @@ void autonomous() {
 }
 
 void opcontrol() {
+	bool sorting = true;
 	while (true) {
 		// button to start autonomous for testing
 		if (master.get_digital(DIGITAL_RIGHT) && !competition::is_connected())
@@ -98,14 +99,20 @@ void opcontrol() {
 
 		// color sensor ejecting
 		static int ejectCount = 0;
-		if (sensors::colorDetect()) {
-			ejectCount = 200; // eject time 100 ms
-			indexer::speed = 50;
+		if (sorting) {
+			if (sensors::colorDetect()) {
+				ejectCount = 200; // eject time 100 ms
+				indexer::speed = 50;
+			}
+			if (ejectCount > 0) {
+				ejectCount -= 10; // amount of ms passed
+				ejector::speed = -100;
+			}
 		}
-		if (ejectCount > 0) {
-			ejectCount -= 10; // amount of ms passed
-			ejector::speed = -100;
-		}
+
+		// color sensor toggle
+		if (master.get_digital_new_press(DIGITAL_DOWN))
+			sorting = !sorting;
 
 		// run indexer backwards
 		if (master.get_digital(DIGITAL_LEFT))
