@@ -23,7 +23,7 @@ void red() {
 	wallhook::move(-5);
 
 	// Move to intake 1st auton line ball
-	chassis::move(42, 100);
+	chassis::move(47.5, 100);
 
 	// Reverse, turn, and push red into middle goal
 	chassis::move(-8, 40);
@@ -32,7 +32,7 @@ void red() {
 	chassis::turnAbsolute(90);
 	intake::move(0);
 	wings::toggle();
-	chassis::move(30, 70);
+	chassis::move(34, 70);
 	wings::toggle();
 
 	// Turn and align with home row goal
