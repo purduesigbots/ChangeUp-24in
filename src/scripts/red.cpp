@@ -23,7 +23,7 @@ void red() {
 	wallhook::move(-5);
 
 	// Move to intake 1st auton line ball
-	chassis::move(47.5, 100);
+	chassis::move(50, 100);
 
 	// Reverse, turn, and push red into middle goal
 	chassis::move(-8, 40);
@@ -33,13 +33,13 @@ void red() {
 	intake::move(0);
 	wings::toggle();
 	chassis::move(34, 70);
-	wings::toggle();
 
 	// Turn and align with home row goal
-	chassis::move(-2);
+	chassis::move(-5);
+	wings::toggle();
 	chassis::turnAbsolute(150);
-	chassis::move(26, 50);
-	chassis::turnAbsolute(178);
+	chassis::move(24, 50);
+	chassis::turnAbsolute(180);
 	intake::move(0);
 	chassis::move(22, 50);
 
@@ -47,17 +47,17 @@ void red() {
 	score();
 
 	// Move to intake 2nd ball
-	chassis::move(-6, 60);
+	chassis::move(-8, 60);
 	intake::move(100);
 	runUntilFull();
 	chassis::turnAbsolute(-90);
-	chassis::move(51, 60);
+	chassis::move(52, 60);
 
 	// Align with corner goal
-	chassis::turnAbsolute(-143, 70);
+	chassis::turnAbsolute(-144, 70);
 
 	// Score 3 in corner goal
-	chassis::move(30, 50);
+	chassis::move(27, 35);
 	runUntilFull();
 	score(3);
 	intake::move(0);
@@ -74,15 +74,17 @@ void red() {
 	intake::move(0);
 
 	// Move to center
-	chassis::turnAbsolute(90);
+	chassis::turnAbsoluteAsync(89);
+	delay(1500);
+	chassis::waitUntilSettled();
 	wallAlignTo(24);
 	while ((millis() - start) <= 31000)
 		delay(10);
-	chassis::move(46, 50);
+	chassis::move(44.5, 50);
 	intake::move(100);
 	indexer::move(50);
 	startFilter();
-	chassis::turnAbsolute(0);
+	chassis::turnAbsolute(-1);
 	chassis::move(48, 40);
 	chassis::setBrakeMode(okapi::AbstractMotor::brakeMode::hold);
 

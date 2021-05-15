@@ -70,7 +70,7 @@ void wallAlignTo(double target) {
 
 		double speed = error * 3 + (error - prevError) * 14 + totalError * 0.03;
 
-		int min = 15;
+		int min = 5;
 		if (abs(speed) < min) {
 			if (speed < 0)
 				speed = -min;
@@ -79,7 +79,7 @@ void wallAlignTo(double target) {
 		}
 
 		if (fabs(error) < .5) {
-			if (fabs(error) < .3)
+			if (fabs(error) < .5)
 				speed = 0;
 			c += 10;
 			if (c > 300)
