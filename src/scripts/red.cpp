@@ -15,6 +15,7 @@ void red() {
 
 	// Store timestamp at beginning of auton for use in last section
 	int start = millis();
+	chassis::resetAngle();
 
 	// Start Intake
 	indexer::move(50);
