@@ -11,7 +11,9 @@ void initialize() {
 	ejector::init();
 	flywheel::init();
 
-	selector::init(360, 1);
+	// initialize autons
+	const char* b[] = {"Main", "Old", ""};
+	selector::init(50, 1, b);
 
 	chassis::init({-17, 18, -19}, {12, -13, 14}, // motors
 	              200,                           // gearset
@@ -47,10 +49,16 @@ void competition_initialize() {
 void autonomous() {
 	switch (selector::auton) {
 	case -1:
-		blue();
+		blue1();
+		break;
+	case -2:
+		blue2();
 		break;
 	case 1:
-		red();
+		red1();
+		break;
+	case 2:
+		red2();
 		break;
 	case 0:
 		skills();

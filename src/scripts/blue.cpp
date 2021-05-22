@@ -1,8 +1,14 @@
 #include "macros.hpp"
 #include "main.h"
 
-void blue() {
-	red(); // run same as red with color sensor flipped
+// run same as red with color sensor flipped
+
+void blue1() {
+	red1();
+}
+
+void blue2() {
+	red2();
 }
 
 /*
