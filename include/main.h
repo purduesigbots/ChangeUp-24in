@@ -20,7 +20,6 @@
 #include "scripts/blue.hpp"
 #include "scripts/macros.hpp"
 #include "scripts/red.hpp"
-#include "scripts/skills.hpp"
 
 using namespace pros;
 

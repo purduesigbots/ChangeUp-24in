@@ -12,7 +12,7 @@ void initialize() {
 	flywheel::init();
 
 	// initialize autons
-	const char* b[] = {"Main", "Old", ""};
+	const char* b[] = {"Main", "Old", "Wall", ""};
 	selector::init(50, 1, b);
 
 	chassis::init({-17, 18, -19}, {12, -13, 14}, // motors
@@ -54,6 +54,8 @@ void autonomous() {
 	case -2:
 		blue2();
 		break;
+	case -3:
+		blueWall();
 	case 1:
 		red1();
 		break;
@@ -62,9 +64,6 @@ void autonomous() {
 		break;
 	case 3:
 		redWall();
-		break;
-	case 0:
-		skills();
 		break;
 	}
 }

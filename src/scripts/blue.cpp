@@ -11,6 +11,10 @@ void blue2() {
 	red2();
 }
 
+void blueWall(){
+  redWall();
+}
+
 /*
 void pidTuner() {
   // chassis::turnAbsoluteAsync(90);
