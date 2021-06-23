@@ -3,5 +3,6 @@
 
 void red1();
 void red2();
+void redWall();
 
 #endif

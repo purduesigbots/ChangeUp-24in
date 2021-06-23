@@ -2,7 +2,7 @@
 
 namespace wallhook {
 
-okapi::MotorGroup motors = {1};
+okapi::MotorGroup motors = {-1};
 int speed = 0;
 
 void init() {

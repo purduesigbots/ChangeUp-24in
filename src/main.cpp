@@ -60,6 +60,9 @@ void autonomous() {
 	case 2:
 		red2();
 		break;
+	case 3:
+		redWall();
+		break;
 	case 0:
 		skills();
 		break;
