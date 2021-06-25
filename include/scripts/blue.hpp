@@ -3,5 +3,6 @@
 
 void blue1();
 void blue2();
+void blueWall();
 
 #endif
