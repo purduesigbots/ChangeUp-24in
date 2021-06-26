@@ -56,6 +56,7 @@ void autonomous() {
 		break;
 	case -3:
 		blueWall();
+		break;
 	case 1:
 		red1();
 		break;
