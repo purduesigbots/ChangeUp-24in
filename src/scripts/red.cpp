@@ -91,8 +91,8 @@ void red1() {
 	chassis::move(52, 50);
 
 	// wait until 35 seconds
-	int del = 35000 - (millis() - start);
-	delay(del < 0 ? 0 : del);
+	// int del = 35000 - (millis() - start);
+	// delay(del < 0 ? 0 : del);
 	intake::move(100);
 	indexer::move(50);
 	ejector::move(-100);
