@@ -6,6 +6,7 @@
 #include "pros/rtos.h"
 #include "pros/rtos.hpp"
 #include "subsystems/ejector.hpp"
+#include "subsystems/flywheel.hpp"
 #include "subsystems/indexer.hpp"
 #include "subsystems/intake.hpp"
 #include "subsystems/sensors.hpp"
@@ -24,29 +25,25 @@ void red1() {
 	wallhook::move(-5);
 
 	// Move to intake 1st auton line ball
-	chassis::move(42, 100);
+	chassis::move(41, 100);
 
 	// Intake 2nd line ball
-	chassis::move(-8, 40);
-	runUntilFull();
-	indexer::move(50);
-	ejector::move(0);
-	chassis::turnAbsolute(58);
-	chassis::move(24, 50);
-	intake::move(0);
+	chassis::turnAbsolute(68);
+	chassis::move(20, 50);
 
 	// Turn and align with home row goal
 	chassis::move(-10);
 	chassis::turnAbsolute(130);
-	chassis::move(37.8, 50);
+	chassis::move(42, 50);
 	chassis::turnAbsolute(180);
 	intake::move(100);
-	chassis::move(22, 50);
+	chassis::move(21, 50);
 
 	// Score in home row
-	runUntilFull();
+	chassis::tank(30, 30);
 	score(3);
 	intake::move(0);
+	flywheel::move(0);
 	delay(500);
 
 	// back out of middle goal
@@ -64,7 +61,7 @@ void red1() {
 	intake::move(0);
 
 	// Align with corner goal
-	chassis::move(52, 60);
+	chassis::move(51, 60);
 	chassis::turnAbsolute(-144, 70);
 	intake::move(100);
 
@@ -88,13 +85,10 @@ void red1() {
 	intake::move(0);
 
 	// Move to center
-	chassis::turnAbsoluteAsync(89);
+	chassis::turnAbsoluteAsync(84);
 	delay(1500);
 	chassis::waitUntilSettled();
-	// wallAlignTo(24);
-	// delay(500);
-	// chassis::move(44.5, 50);
-	chassis::move(69.5 - sensors::getUltrasonicDist(), 50);
+	chassis::move(52, 50);
 
 	// wait until 35 seconds
 	int del = 35000 - (millis() - start);
@@ -102,7 +96,7 @@ void red1() {
 	intake::move(100);
 	indexer::move(50);
 	ejector::move(-100);
-	chassis::turnAbsolute(-1);
+	chassis::turnAbsolute(-1.5);
 	chassis::move(55, 40);
 	chassis::setBrakeMode(okapi::AbstractMotor::brakeMode::hold);
 
