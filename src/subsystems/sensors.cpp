@@ -5,7 +5,7 @@ namespace sensors {
 
 #define FLYWHEEL_THRESHOLD 2775
 #define EJECT_THRESHOLD 2700
-#define BLUE 150
+#define BLUE 167
 #define RED 25
 
 ADIAnalogIn flywheel_sensor('b');

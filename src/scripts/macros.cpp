@@ -24,7 +24,7 @@ void score(int num) {
 
 	flywheel::move(80);
 	ejector::move(100);
-	indexer::move(100);
+	indexer::move(60);
 
 	while (i < num && c < 1500) {
 		delay(10);

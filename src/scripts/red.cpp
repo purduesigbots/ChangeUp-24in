@@ -28,7 +28,7 @@ void red1() {
 	chassis::move(41, 100);
 
 	// Intake 2nd line ball
-	chassis::turnAbsolute(68);
+	chassis::turnAbsolute(70);
 	chassis::move(20, 50);
 
 	// Turn and align with home row goal
@@ -36,11 +36,12 @@ void red1() {
 	chassis::turnAbsolute(130);
 	chassis::move(42, 50);
 	chassis::turnAbsolute(180);
-	intake::move(100);
-	chassis::move(21, 50);
+	intake::move(50);
+	chassis::move(20, 50);
 
 	// Score in home row
 	chassis::tank(30, 30);
+	intake::move(100);
 	score(3);
 	intake::move(0);
 	flywheel::move(0);
@@ -91,12 +92,12 @@ void red1() {
 	chassis::move(52, 50);
 
 	// wait until 35 seconds
-	// int del = 35000 - (millis() - start);
-	// delay(del < 0 ? 0 : del);
+	int del = 35000 - (millis() - start);
+	delay(del < 0 ? 0 : del);
 	intake::move(100);
 	indexer::move(50);
 	ejector::move(-100);
-	chassis::turnAbsolute(-1.5);
+	chassis::turnAbsolute(-3);
 	chassis::move(55, 40);
 	chassis::setBrakeMode(okapi::AbstractMotor::brakeMode::hold);
 
@@ -248,7 +249,7 @@ void redWall() {
 	// Turn and align with home row goal
 	chassis::move(-10);
 	chassis::turnAbsolute(130);
-	chassis::move(38.5, 50);
+	chassis::move(37, 50);
 	chassis::turnAbsolute(180);
 	intake::move(100);
 	chassis::move(21, 50);
@@ -280,7 +281,7 @@ void redWall() {
 	runUntilFull();
 
 	// Align with corner goal
-	chassis::move(47, 60);
+	chassis::move(46.5, 60);
 	chassis::turnAbsolute(-144, 70);
 	intake::move(100);
 
@@ -294,7 +295,7 @@ void redWall() {
 
 	// Reverse and eject blue
 
-	chassis::move(-15, 40);
+	chassis::move(-18, 40);
 	chassis::turnAbsolute(-60, 50);
 	flywheel::move(-100);
 	indexer::move(-100);
@@ -305,13 +306,12 @@ void redWall() {
 	intake::move(0);
 
 	// Move to center
-	chassis::turnAbsoluteAsync(89, 50);
+	chassis::turnAbsoluteAsync(88, 50);
 	delay(1500);
 	chassis::waitUntilSettled();
 	// wallAlignTo(24);
 	// delay(500);
-	// chassis::move(44.5, 50);
-	chassis::move(69.5 - sensors::getUltrasonicDist(), 50);
+	chassis::move(52, 50);
 
 	// wait until 35 seconds
 	// int del = 35000 - (millis() - start);
